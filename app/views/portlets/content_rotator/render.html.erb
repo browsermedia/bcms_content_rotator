@@ -1,0 +1,46 @@
+<%# This portlet can only display a single slideshow per page by default.
+    - It uses an explicit ids (#slide and #controls).
+    - It could be changed via the template editor.
+    - CSS needs to be handled externally to stack things correctly.
+-%>
+<script language="javascript">
+  $().ready(function() {
+      <%#  Select first slide as 'on'. Hide all other slides. -%>
+      var slides = $('#slides div.slide');
+      slides.hide();
+      slides.filter(':first').show();
+      $('#slides #controls li').filter(':first').addClass('on');
+
+      <%#  Add a click handler to each link in the controls -%>
+      $('#slides ul#controls li a').click(function() {
+          if ($(this).parent().hasClass('on')) {
+              return false;
+          } else {
+              $('#slides ul#controls li').removeClass('on');
+              $(this).parent().addClass('on');
+              slides.hide();
+              slides.filter(this.hash).show();
+              return false;
+          }
+      })
+  });
+</script>
+<div id="slides">
+  <ul id="controls">
+    <% @slides.each_with_index do |slide, i| %>
+        <li><a href="#slide-<%= i %>"><%= slide.name %></a></li>
+    <% end %>
+  </ul>
+  <% @slides.each_with_index do |slide, i| %>
+      <div id="slide-<%= i %>" class="slide">
+        <div class="info">
+          <div class="pad">
+            <h3><%= slide.name %></h3>
+            <%= slide.description %>
+          </div>
+        </div>
+        <%= image_tag slide.image_url, :alt=>slide.alt_text %>
+      </div>
+  <% end %>
+</div>
+

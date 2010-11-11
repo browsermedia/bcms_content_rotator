@@ -1,0 +1,8 @@
+<% @slides = Slide.all %>
+<%= f.cms_text_field :name %>
+<%= f.cms_drop_down :slide_1_id, @slides.map{|c| [c.name, c.id.to_s]}, :label=>"Slide 1", :include_blank=>"[No slide selected]" %>
+<%= f.cms_drop_down :slide_2_id, @slides.map{|c| [c.name, c.id.to_s]}, :label=>"Slide 2", :include_blank=>"[No slide selected]" %>
+<%= f.cms_drop_down :slide_3_id, @slides.map{|c| [c.name, c.id.to_s]}, :label=>"Slide 3", :include_blank=>"[No slide selected]" %>
+<%= f.cms_drop_down :slide_4_id, @slides.map{|c| [c.name, c.id.to_s]}, :label=>"Slide 4", :include_blank=>"[No slide selected]" %>
+<%= f.cms_drop_down :slide_5_id, @slides.map{|c| [c.name, c.id.to_s]}, :label=>"Slide 5", :include_blank=>"[No slide selected]" %>
+<%= f.cms_template_editor :template %>
