@@ -47,18 +47,20 @@
 <div id="slides">
   <ul id="controls">
     <% @slides.each_with_index do |slide, i| %>
-        <li><a href="#slide-<%= i %>"><%= slide.name %></a></li>
+        <li><a href="#slide-<%= i %>"><%= h slide.name %></a></li>
     <% end %>
   </ul>
   <% @slides.each_with_index do |slide, i| %>
       <div id="slide-<%= i %>" class="slide">
         <div class="info">
           <div class="pad">
-            <h3><%= slide.name %></h3>
+            <h3><%= h slide.name %></h3>
             <%= slide.description %>
           </div>
         </div>
-        <%= image_tag slide.image_url, :alt => slide.alt_text %>
+        <% unless slide.image_url.blank? %>
+          <%= image_tag slide.image_url, :alt => h(slide.alt_text) %>
+        <% end %>
       </div>
   <% end %>
 </div>
