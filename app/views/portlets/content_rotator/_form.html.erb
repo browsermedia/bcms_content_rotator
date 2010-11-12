@@ -5,4 +5,6 @@
 <%= f.cms_drop_down :slide_3_id, @slides.map{|c| [c.name, c.id.to_s]}, :label=>"Slide 3", :include_blank=>"[No slide selected]" %>
 <%= f.cms_drop_down :slide_4_id, @slides.map{|c| [c.name, c.id.to_s]}, :label=>"Slide 4", :include_blank=>"[No slide selected]" %>
 <%= f.cms_drop_down :slide_5_id, @slides.map{|c| [c.name, c.id.to_s]}, :label=>"Slide 5", :include_blank=>"[No slide selected]" %>
+<%= f.cms_check_box :autorotate, :instructions => "Should the slides rotate automatically?" %>
+<%= f.cms_text_field :rotate_interval, :instructions => "in seconds (has no effect if autorotate is off)" %>
 <%= f.cms_template_editor :template %>
