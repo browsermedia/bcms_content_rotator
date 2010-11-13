@@ -15,5 +15,5 @@ SPEC = Gem::Specification.new do |spec|
   spec.files += Dir["rails/init.rb"]
   spec.files += Dir["public/bcms/content_rotator/**/*"]
   spec.has_rdoc = true
-  spec.extra_rdoc_files = ["README"]
+  spec.extra_rdoc_files = ["README.markdown"]
 end

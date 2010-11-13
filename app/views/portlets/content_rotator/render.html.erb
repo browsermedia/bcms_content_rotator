@@ -4,6 +4,7 @@
     - CSS needs to be handled externally to stack things correctly.
 -%>
 <script type="text/javascript">
+//<![CDATA[  
   $(function() {
     var slides = $('#slides div.slide');
     var currentItem = 0;
@@ -42,6 +43,7 @@
       setInterval(runSlideShow, (rotate_interval < 1000 ? 1000 : rotate_interval)); 
     }
   });
+//]]>
 </script>
 
 <div id="slides">
@@ -64,4 +66,3 @@
       </div>
   <% end %>
 </div>
-
