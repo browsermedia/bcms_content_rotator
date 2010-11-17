@@ -1,48 +1,44 @@
-<%# This portlet can only display a single slideshow per page by default.
-    - It uses an explicit ids (#slide and #controls).
-    - It could be changed via the template editor.
-    - CSS needs to be handled externally to stack things correctly.
--%>
 <script type="text/javascript">
-//<![CDATA[  
-  $(function() {
-    var slides = $('#slides div.slide');
-    var currentItem = 0;
-    var rotate_interval = <%= @portlet.rotate_interval.to_i %> * 1000;
-    var autorotate = <%= @portlet.autorotate %>; 
+//<![CDATA[
+$(function() {
+  var slides = $('#slides div.slide'),
+      currentItem = 0,
+      rotateInterval = <%= @portlet.rotate_interval.to_i %> * 1000,
+      autorotate = <%= @portlet.autorotate %>,
 
-    var runSlideShow = function() { 
-      var item = $('#slides ul#controls li a:eq('+currentItem+')');
-        if (item.length) {
-          item.trigger('click', ['timer']);
-          currentItem++;
+
+      runSlideShow = function() {
+        var item = $('#slides ul#controls li a:eq('+currentItem+')');
+          if (item.length) {
+            item.trigger('click', ['timer']);
+            currentItem++;
+          } else {
+            currentItem = 0;
+          }
+      },
+
+      selectSlide = function(e) {
+        if ($(this).parent().hasClass('on')) {
+          return false;
         } else {
-          currentItem = 0;
+          $('#slides ul#controls li').removeClass('on');
+          $(this).parent().addClass('on');
+          slides.hide();
+          slides.filter(this.hash).show();
+          return false;
         }
-     };
+      };
 
-    var selectSlide = function(e) {
-      if ($(this).parent().hasClass('on')) {
-        return false;
-      } else {
-        $('#slides ul#controls li').removeClass('on');
-        $(this).parent().addClass('on');
-        slides.hide();
-        slides.filter(this.hash).show();
-        return false;
-      }
-    };
+  slides.hide();
+  slides.filter(':first').show();
+  $('#slides #controls li').filter(':first').addClass('on');
+  $('#slides ul#controls li a').bind('click', {}, selectSlide).
+    each(function(i) { this.slideIndex=i; });
 
-    slides.hide();
-    slides.filter(':first').show();
-    $('#slides #controls li').filter(':first').addClass('on');
-    $('#slides ul#controls li a').bind('click', {}, selectSlide).
-      each(function(i) { this.slideIndex=i; });
-
-    if (autorotate) { 
-      setInterval(runSlideShow, (rotate_interval < 1000 ? 1000 : rotate_interval)); 
-    }
-  });
+  if (autorotate) {
+    setInterval(runSlideShow, (rotateInterval < 1000 ? 1000 : rotateInterval)); 
+  }
+});
 //]]>
 </script>
 
