@@ -5,13 +5,18 @@ This module allows editors to create a rotating jquery based slideshow. Each rot
 ## Features
 
 * _Rotator_ - Allows up to five slides in rotation. Staff can choose to enable autorotation, as well as how long between each slide.
-* _Slides_ - A content type consisting of:
-** Title (String)
-** Alt Text (String)
-** Image URL (URL)
-** Description (Html)
-** Link Url: 
+* _Slides_ - Each slide represents a single frame within the rotation.
 * _Preloading Slides_ - Editors can create as many slides as they like, and choose which slides should appear in the rotation and in what order.
+
+### Slide Content Type
+
+Each slide can consists of the following attributes:
+
+* Title (String) 
+* Alt Text (String)
+* Image URL (URL) 
+* Description (Html)
+* Link Url (URL) - Determines where the user goes when they click the slide.
 
 
 ## Installation
