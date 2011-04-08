@@ -57,7 +57,7 @@ $(function() {
           </div>
         </div>
         <% unless slide.image_url.blank? %>
-          <%= image_tag slide.image_url, :alt => h(slide.alt_text) %>
+          <%= link_to_if(slide.has_link?, image_tag(slide.image_url, :alt => h(slide.alt_text)), slide.link_url) %>
         <% end %>
       </div>
   <% end %>
