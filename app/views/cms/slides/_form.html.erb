@@ -1,5 +1,5 @@
 <%= f.cms_text_field :name %>
-<%= f.cms_text_field :image_url %>
+<%= f.cms_text_field :image_url, :label=>"Link URL" %>
 <%= f.cms_text_field :alt_text %>
-<%= f.cms_text_field :link_url, :label=>"Link to", :instructions=>"Set a URL (http://...) here to make the slide clickable, leave blank otherwise." %>
+<%= f.cms_text_field :link_url, :label=>"Link URL", :instructions=>"Set a URL (http://...) here to make the slide clickable, leave blank otherwise." %>
 <%= f.cms_text_editor :description %>

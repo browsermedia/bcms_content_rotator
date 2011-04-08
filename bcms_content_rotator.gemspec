@@ -1,7 +1,7 @@
 SPEC = Gem::Specification.new do |spec| 
   spec.name = "bcms_content_rotator"
   spec.rubyforge_project = spec.name
-  spec.version = "1.0.0"
+  spec.version = "1.1.0"
   spec.summary = "A Content Rotator Module for BrowserCMS"
   spec.author = "BrowserMedia" 
   spec.email = "github@browsermedia.com" 

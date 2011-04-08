@@ -10,6 +10,7 @@ This module allows editors to create a rotating jquery based slideshow. Each rot
 ** Alt Text (String)
 ** Image URL (URL)
 ** Description (Html)
+** Link Url: 
 * _Preloading Slides_ - Editors can create as many slides as they like, and choose which slides should appear in the rotation and in what order.
 
 
