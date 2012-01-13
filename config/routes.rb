@@ -1,4 +1,8 @@
-Src::Application.routes.draw do
+BcmsContentRotator::Application.routes.draw do
+  routes_for_bcms_content_rotator
+
+  routes_for_browser_cms
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

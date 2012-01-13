@@ -1,12 +1,13 @@
-class CreateSlides < ActiveRecord::Migration
+# Migration for v1.2.0 of bcms_content_rotator
+class BcmsContentRotator120 < ActiveRecord::Migration
   def self.up
     create_content_table :slides do |t|
       t.string :name 
-      t.string :image_url 
+      t.string :image_url
+      t.string :link_url
       t.string :alt_text 
       t.text :description 
     end
-    
     
     ContentType.create!(:name => "Slide", :group_name => "Content Rotator")
   end

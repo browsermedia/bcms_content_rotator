@@ -32,3 +32,7 @@ Since this module relies on jquery, manually the javascript_include_tag to your 
 	</head>
 	
 Once this is complete, you can add a new "Content Rotator Portlet" to any page. Create several slides, and edit the content rotator to choose the order.
+
+## Upgrading Notes
+
+The name of the migration was changed for v1.2.0 to consolidate multiple migrations into a single one. This won't affect projects using this module for the first time, but you may need to review older projects and remove the duplicate migrations.

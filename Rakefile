@@ -4,4 +4,7 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Src::Application.load_tasks
+BcmsContentRotator::Application.load_tasks
+
+require 'bundler'
+Bundler::GemHelper.install_tasks
