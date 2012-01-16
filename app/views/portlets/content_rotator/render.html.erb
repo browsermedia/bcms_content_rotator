@@ -1,64 +1,22 @@
-<script type="text/javascript">
-//<![CDATA[
-$(function() {
-  var slides = $('#slides div.slide'),
-      currentItem = 0,
-      rotateInterval = <%= @portlet.rotate_interval.to_i %> * 1000,
-      autorotate = <%= @portlet.autorotate %>,
-
-
-      runSlideShow = function() {
-        var item = $('#slides ul#controls li a:eq('+currentItem+')');
-          if (item.length) {
-            item.trigger('click', ['timer']);
-            currentItem++;
-          } else {
-            currentItem = 0;
-          }
-      },
-
-      selectSlide = function(e) {
-        if ($(this).parent().hasClass('on')) {
-          return false;
-        } else {
-          $('#slides ul#controls li').removeClass('on');
-          $(this).parent().addClass('on');
-          slides.hide();
-          slides.filter(this.hash).show();
-          return false;
-        }
-      };
-
-  slides.hide();
-  slides.filter(':first').show();
-  $('#slides #controls li').filter(':first').addClass('on');
-  $('#slides ul#controls li a').bind('click', {}, selectSlide).
-    each(function(i) { this.slideIndex=i; });
-
-  if (autorotate) {
-    setInterval(runSlideShow, (rotateInterval < 1000 ? 1000 : rotateInterval)); 
-  }
-});
-//]]>
-</script>
-
-<div id="slides">
+<div id="slides" data-rotate-interval="<%= @portlet.rotate_interval.to_i %>" data-autorotate="<%= @portlet.autorotate %>">
   <ul id="controls">
     <% @slides.each_with_index do |slide, i| %>
-        <li><a href="#slide-<%= i %>"><%= h slide.name %></a></li>
+        <li><a href="#slide-<%= i %>"><%= h slide.nav_title_or_name %></a></li>
     <% end %>
   </ul>
   <% @slides.each_with_index do |slide, i| %>
-      <div id="slide-<%= i %>" class="slide">
-        <div class="info">
-          <div class="pad">
-            <h3><%= h slide.name %></h3>
-            <%= slide.description.html_safe %>
-          </div>
-        </div>
-        <% unless slide.image_url.blank? %>
-          <%= link_to_if(slide.has_link?, image_tag(slide.image_url, :alt => h(slide.alt_text)), slide.link_url) %>
-        <% end %>
+  <div id="slide-<%= i %>" class="slide">
+    <div class="info">
+      <div class="pad">
+        <h3><%= h slide.name %></h3>
+        <%= slide.description.html_safe %>
+        <%= link_to("Read More &raquo;".html_safe, slide.link_url) if slide.has_link?  %>
       </div>
+    </div>
+    <% unless slide.image_url.blank? %>
+      <%= image_tag(slide.image_url, :alt => h(slide.alt_text)) %>
+    <% end %>
+  </div>
   <% end %>
 </div>
+

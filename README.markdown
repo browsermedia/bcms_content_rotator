@@ -14,9 +14,10 @@ Each slide can consists of the following attributes:
 
 * Title (String) 
 * Alt Text (String)
-* Image URL (URL) 
+* Image (File) - An uploaded image which will be shown as the background of the slide.
 * Description (Html)
 * Link Url (URL) - Determines where the user goes when they click the slide.
+* Nav Title (String) - The name for the clickable link to changes slides (If left blank, it will show the name of the slide).
 
 
 ## Installation
@@ -27,12 +28,22 @@ Since this module relies on jquery, manually the javascript_include_tag to your 
 
 	<head>
 	    ...
-		<%= javascript_include_tag 'jquery' %>
+		<%= javascript_include_tag 'jquery', :bcms_content_rotator %>
 		<%= yield :html_head %>
 	</head>
 	
 Once this is complete, you can add a new "Content Rotator Portlet" to any page. Create several slides, and edit the content rotator to choose the order.
 
+
+### Customization Notes
+
+* Each rotator's template is editable through the UI
+* By default, each slide has a 'Read More >>' link that will link to the Link URL (if the URL is specified).
+
 ## Upgrading Notes
 
-The name of the migration was changed for v1.2.0 to consolidate multiple migrations into a single one. This won't affect projects using this module for the first time, but you may need to review older projects and remove the duplicate migrations.
+Upgrading this module from versions < 1.2.0 will require manual updates to the database.
+
+* There is now one migration named bcms_content_rotator120.rb, with some new fields for attachments.
+* The image_url column has been replaced with attachment ids.
+* The portlet views have no javascript in them anymore (its now a separate js file), so it may be worth creating a new portlet and comparing the HTML view code.

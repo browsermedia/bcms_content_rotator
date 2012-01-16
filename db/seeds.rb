@@ -55,3 +55,5 @@ pages(:home).publish!
 puts "*************************************************"    
 puts "* YOUR CMS username/password is: cmsadmin/#{pwd}"    
 puts "*************************************************"
+
+load File.expand_path('../bcms_content_rotator.seeds.rb', __FILE__)

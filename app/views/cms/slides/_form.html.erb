@@ -1,5 +1,6 @@
-<%= f.cms_text_field :name %>
-<%= f.cms_text_field :image_url, :label=>"Image URL" %>
-<%= f.cms_text_field :alt_text %>
-<%= f.cms_text_field :link_url, :label=>"Link URL", :instructions=>"Set a URL (http://...) here to make the slide clickable, leave blank otherwise." %>
+<%= f.cms_text_field :name, :instructions=>"(Required) Title for this slide." %>
+<%= f.cms_file_field :attachment_file, :label => "Image", :instructions => "(Required) Upload an image for the background of this slide." %>
+<%= f.cms_text_field :alt_text, :instructions => "(Optional) Alt tag for each image. Displayed as tool tip when user mouse over." %>
+<%= f.cms_text_field :link_url, :label=>"Link URL", :instructions=>"(Optional) Set a URL (i.e. http://...) to make the slide clickable. (If blank, images won't be be links.)" %>
+<%= f.cms_text_field :navigation_title, :label=>"Nav Title", :instructions=>"(Optional) Title that users will click on to select a slide  (If blank, 'name' will be used.)" %>
 <%= f.cms_text_editor :description %>

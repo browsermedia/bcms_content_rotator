@@ -1,5 +1,5 @@
 <p><b>Name:</b> <%= h @content_block.name %></p>
-<p><b>Image Url:</b> <%= h @content_block.image_url %></p>
+<p><b>Image:</b> <%= image_tag @content_block.attachment.file_path %></p>
 <p><b>Alt Text:</b> <%= h @content_block.alt_text %></p>
 <p><b>Description:</b> <%= @content_block.description.html_safe %></p>
 <p><b>Link Url:</b> <%= @content_block.link_url %>

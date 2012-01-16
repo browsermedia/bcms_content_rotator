@@ -1,10 +1,16 @@
-<% @slides = Slide.all %>
+<%
+   @slides = Slide.all
+   @slide_map = @slides.map{|c| [c.name, c.id.to_s]}
+%>
 <%= f.cms_text_field :name %>
-<%= f.cms_drop_down :slide_1_id, @slides.map{|c| [c.name, c.id.to_s]}, :label=>"Slide 1", :include_blank=>"[No slide selected]" %>
-<%= f.cms_drop_down :slide_2_id, @slides.map{|c| [c.name, c.id.to_s]}, :label=>"Slide 2", :include_blank=>"[No slide selected]" %>
-<%= f.cms_drop_down :slide_3_id, @slides.map{|c| [c.name, c.id.to_s]}, :label=>"Slide 3", :include_blank=>"[No slide selected]" %>
-<%= f.cms_drop_down :slide_4_id, @slides.map{|c| [c.name, c.id.to_s]}, :label=>"Slide 4", :include_blank=>"[No slide selected]" %>
-<%= f.cms_drop_down :slide_5_id, @slides.map{|c| [c.name, c.id.to_s]}, :label=>"Slide 5", :include_blank=>"[No slide selected]" %>
-<%= f.cms_check_box :autorotate, :label => "Automatically rotate" %>
-<%= f.cms_text_field :rotate_interval, :label => "Rotation delay", :instructions => "in seconds (has no effect if autorotate is off)" %>
+<%= f.cms_drop_down :slide_1_id, @slide_map, :label=>"Slide 1", :include_blank=>"[No slide selected]" %>
+<%= f.cms_drop_down :slide_2_id, @slide_map, :label=>"Slide 2", :include_blank=>"[No slide selected]" %>
+<%= f.cms_drop_down :slide_3_id, @slide_map, :label=>"Slide 3", :include_blank=>"[No slide selected]" %>
+<%= f.cms_drop_down :slide_4_id, @slide_map, :label=>"Slide 4", :include_blank=>"[No slide selected]" %>
+<%= f.cms_drop_down :slide_5_id, @slide_map, :label=>"Slide 5", :include_blank=>"[No slide selected]" %>
+<%= f.cms_check_box :autorotate, :instructions => "Should slides automatically rotate?" %>
+<%= f.cms_text_field :rotate_interval, :label => "Rotation delay", :instructions => "How long each slide will appear (in seconds). Has no effect if autorotate is off." %>
+<style>
+  textarea { font-family: "Courier"}
+</style>
 <%= f.cms_template_editor :template %>
