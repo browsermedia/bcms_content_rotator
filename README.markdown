@@ -22,7 +22,10 @@ Each slide can consists of the following attributes:
 
 ## Installation
 
-Follow the standard bcms module installation found here: http://guides.browsercms.org/installing_modules.html
+Follow the standard bcms module installation found here: http://guides.browsercms.org/installing_modules.html. If you are adding this to an existing project, you will also need to manually seed the database after running the migrations, like so:
+
+    $ rake db:migrate
+    $ rake db:seed:bcms_content_rotator
 
 Since this module relies on jquery, manually the javascript_include_tag to your page templates for any page that the slide show will appear on, like so:
 

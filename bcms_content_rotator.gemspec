@@ -12,7 +12,9 @@ Gem::Specification.new do |spec|
   spec.homepage = "https://github.com/browsermedia/bcms_content_rotator" 
   spec.files += Dir["app/**/*"]
   spec.files += Dir["db/migrate/*.rb"]
+  spec.files += Dir["db/bcms_content_rotator.seeds.rb"]
   spec.files -= Dir["db/migrate/*_browsercms_*.rb"]
+  spec.files += Dir["public/bcms/content_rotator/*"]
   spec.files += Dir["lib/**/*"]
   spec.files += Dir["COPYRIGHT.txt", "GPL.txt", "LICENSE.txt", "Gemfile"]
   spec.files -= Dir['app/controllers/application_controller.rb',
