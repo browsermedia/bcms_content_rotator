@@ -1,4 +1,4 @@
-
+var startslides;
 $(function() {
   var autorotate = $('#slides').data('autorotate'),
       rotateInterval = $('#slides').data('rotate-interval') * 1000;
@@ -8,7 +8,7 @@ $(function() {
       runSlideShow = function() {
         var item = $('#slides ul#controls li a:eq('+currentItem+')');
           if (item.length) {
-            item.trigger('click', ['timer']);
+            item.trigger('custom', ['timer']);
             currentItem++;
           } else {
             currentItem = 0;
@@ -30,10 +30,14 @@ $(function() {
   slides.hide();
   slides.filter(':first').show();
   $('#slides #controls li').filter(':first').addClass('on');
-  $('#slides ul#controls li a').bind('click', {}, selectSlide).
+  $('#slides ul#controls li a').bind('custom', {}, selectSlide).
     each(function(i) { this.slideIndex=i; });
+  $('#slides ul#controls li a').click(function() {
+      $(this).trigger('custom');
+      clearInterval(startslides);
+  });
 
   if (autorotate) {
-    setInterval(runSlideShow, (rotateInterval < 1000 ? 1000 : rotateInterval));
+    startslides = setInterval(runSlideShow, (rotateInterval < 1000 ? 1000 : rotateInterval));
   }
 });
