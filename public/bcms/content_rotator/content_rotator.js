@@ -35,6 +35,7 @@ $(function() {
   $('#slides ul#controls li a').click(function() {
       $(this).trigger('custom');
       clearInterval(startslides);
+      return false;
   });
 
   if (autorotate) {
