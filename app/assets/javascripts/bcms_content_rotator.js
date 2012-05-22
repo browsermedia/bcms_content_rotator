@@ -5,14 +5,16 @@ $(function() {
 
   var slides = $('#slides div.slide'),
       currentItem = 0,
+      numItems = $('#slides ul#controls li a').length,
       runSlideShow = function() {
         var item = $('#slides ul#controls li a:eq('+currentItem+')');
-          if (item.length) {
-            item.trigger('custom', ['timer']);
+          if (currentItem < numItems) {
             currentItem++;
-          } else {
-            currentItem = 0;
+			if (currentItem == numItems) {
+				currentItem = 0;
+			}
           }
+		  item.trigger('custom', ['timer']);
       },
 
       selectSlide = function(e) {
