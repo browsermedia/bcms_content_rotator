@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     bcms_content_rotator (1.3.0)
-      browsercms (>= 3.5.0.rc2, < 3.6.0)
+      browsercms (>= 3.5.0.rc3, < 3.6.0)
 
 GEM
   remote: http://rubygems.org/
@@ -38,7 +38,7 @@ GEM
       activerecord (>= 2.2.2)
     ansi (1.4.2)
     arel (3.0.2)
-    browsercms (3.5.0.rc2)
+    browsercms (3.5.0.rc3)
       ancestry (~> 1.2.4)
       ckeditor_rails (~> 3.6.2.2)
       jquery-rails (~> 2.0)
