@@ -27,11 +27,11 @@ Follow the standard bcms module installation found here: http://guides.browsercm
     $ rake db:migrate
     $ rake db:seed:bcms_content_rotator
 
-Since this module relies on jquery, manually the javascript_include_tag to your page templates for any page that the slide show will appear on, like so:
+Next, add the content rotator javascript to your templates. The asset pipeline will automatically pull in the necessary dependencies like jquery.
 
 	<head>
 	    ...
-		<%= javascript_include_tag 'jquery', :bcms_content_rotator %>
+		<%= javascript_include_tag :bcms_content_rotator %>
 		<%= yield :html_head %>
 	</head>
 	
