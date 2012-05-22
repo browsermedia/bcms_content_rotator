@@ -1,4 +1,4 @@
-ContentType.create!(:name => "Slide", :group_name => "Content Rotator")
-unless Section.with_path('/slides').exists?
-  Section.create!(:name => "Slide", :parent => Section.system_section.first, :path => '/slides', :allow_groups=>:all)
+Cms::ContentType.create!(:name => "BcmsContentRotator::Slide", :group_name => "Content Rotator")
+unless Cms::Section.with_path('/slides').exists?
+  Cms::Section.create!(:name => "Slide", :parent => Cms::Section.system.first, :path => '/slides', :allow_groups=>:all)
 end

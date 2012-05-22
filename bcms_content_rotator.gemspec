@@ -10,18 +10,15 @@ Gem::Specification.new do |spec|
   spec.author = "BrowserMedia" 
   spec.email = "github@browsermedia.com" 
   spec.homepage = "https://github.com/browsermedia/bcms_content_rotator" 
-  spec.files += Dir["app/**/*"]
-  spec.files += Dir["db/migrate/*.rb"]
-  spec.files += Dir["db/bcms_content_rotator.seeds.rb"]
-  spec.files -= Dir["db/migrate/*_browsercms_*.rb"]
-  spec.files += Dir["public/bcms/content_rotator/*"]
-  spec.files += Dir["lib/**/*"]
-  spec.files += Dir["COPYRIGHT.txt", "GPL.txt", "LICENSE.txt", "Gemfile"]
-  spec.files -= Dir['app/controllers/application_controller.rb',
-                    'app/helpers/application_helper.rb',
-                    'app/layouts/templates/**/*']
+  
+  spec.files = Dir["{app,config,db,lib}/**/*"]
+  spec.files += Dir["Gemfile", "LICENSE.txt", "COPYRIGHT.txt", "GPL.txt" ]
+
+  spec.test_files += Dir["test/**/*"]
+  spec.test_files -= Dir['test/dummy/**/*']
+  
   spec.has_rdoc = true
   spec.extra_rdoc_files = ["README.markdown"]
   
-  spec.add_dependency "browsercms", "~> 3.3.0"
+  spec.add_dependency("browsercms", "< 3.6.0", ">= 3.5.0.rc2")
 end

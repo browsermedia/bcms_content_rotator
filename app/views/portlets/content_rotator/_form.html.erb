@@ -1,5 +1,5 @@
 <%
-   @slides = Slide.all
+   @slides = BcmsContentRotator::Slide.all
    @slide_map = @slides.map{|c| [c.name, c.id.to_s]}
 %>
 <%= f.cms_text_field :name %>

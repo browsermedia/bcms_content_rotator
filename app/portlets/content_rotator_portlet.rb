@@ -1,4 +1,4 @@
-class ContentRotatorPortlet < Portlet
+class ContentRotatorPortlet < Cms::Portlet
 
   # Mark this as 'true' to allow the portlet's template to be editable via the CMS admin UI.
   enable_template_editor true
@@ -12,7 +12,7 @@ class ContentRotatorPortlet < Portlet
       @slide_ids << s_id.to_i if (s_id && !s_id.empty?)
     end
 
-    unsorted_slides = Slide.find(@slide_ids)
+    unsorted_slides = BcmsContentRotator::Slide.find(@slide_ids)
 
     # Sort slides into explicit order based on slide_ids
     @slides = []

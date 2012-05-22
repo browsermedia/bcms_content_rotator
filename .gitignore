@@ -11,3 +11,6 @@ public/cache
 .rvmrc
 .livereload
 .idea/*
+test/dummy/tmp
+test/dummy/.sass-cache
+test/dummy/log

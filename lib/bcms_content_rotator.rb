@@ -1,2 +1,4 @@
-require 'bcms_content_rotator/engine'
-require 'bcms_content_rotator/routes'
+require "bcms_content_rotator/engine"
+
+module BcmsContentRotator
+end
